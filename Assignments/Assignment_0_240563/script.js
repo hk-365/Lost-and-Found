@@ -27,6 +27,15 @@ function updateDate() {
     document.getElementById('current-date').textContent = dateString;
 }
 
+// Function to add smooth scrolling to sections
+function addSmoothScrolling() {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        section.addEventListener('click', function() {
+            this.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+}
 
 
 // Function to update time every minute
@@ -40,3 +49,19 @@ function startTimeUpdater() {
         updateDate();
     }, 60000);
 }
+
+// Initialize all functions when the DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    startTimeUpdater();
+    addSmoothScrolling();
+    
+    
+    // Add fade-in effect for the entire page
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 1s ease';
+    
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
+});
+
