@@ -7,7 +7,6 @@ const cloudinary = require('../cloudinary');
 
 const upload = multer();
 
-// ✅ Upload image to Cloudinary
 router.post('/upload', upload.single('image'), async (req, res) => {
   if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
 
@@ -32,7 +31,6 @@ router.post('/upload', upload.single('image'), async (req, res) => {
   }
 });
 
-// ✅ Add item (no username restriction)
 router.post('/', async (req, res) => {
   const { title, description, contact, phone, image, tag } = req.body;
 
@@ -54,7 +52,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// ✅ Get all items
 router.get('/', async (req, res) => {
   try {
     const result = await pool.query(
@@ -67,7 +64,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// ✅ Update item (no username check)
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
   const { title, description, contact, phone, image, tag } = req.body;
@@ -97,7 +93,6 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// ✅ Delete item (no username check)
 router.delete('/:id', async (req, res) => {
   const id = parseInt(req.params.id);
 

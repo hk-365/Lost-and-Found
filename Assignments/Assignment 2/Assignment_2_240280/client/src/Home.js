@@ -28,7 +28,7 @@ const Home = ({ isLoggedIn, setIsLoggedIn }) => {
         setItems(sorted);
       })
       .catch((err) => {
-        console.error("❌ Failed to fetch items:", err);
+        console.error("Failed to fetch items:", err);
         setItems([]);
       });
   }, []);
@@ -105,7 +105,7 @@ const Home = ({ isLoggedIn, setIsLoggedIn }) => {
       resetForm();
       setShowModal(false);
     } catch (err) {
-      console.error("❌ Submit failed:", err);
+      console.error("Submit failed:", err);
     }
   };
 
